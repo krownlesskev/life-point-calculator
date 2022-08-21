@@ -1,20 +1,27 @@
 <template>
   <div class="container">
-    <div class="lp">
+    <div class="name">
       <h1>{{ name }}</h1>
+    </div>
+    <div class="lifepoints">
       <h2 v-if="currentLifePoints > 0">Life Points: {{ currentLifePoints }}</h2>
       <p v-else>{{ name }} has no more life points</p>
-      <div>
-        <button class="buttons" @click="dec1000">-1000</button>
-        <button class="buttons" @click="dec100">-100</button>
-        <button class="buttons" @click="dec50">-50</button>
-        <button class="buttons" @click="inc50">+50</button>
-        <button class="buttons" @click="inc100">+100</button>
-        <button class="buttons" @click="inc1000">+1000</button>
+    </div>
+    <div class="image-container"></div>
+    <div class="buttons-container">
+      <div class="buttons-top">
+        <button class="buttons success" @click="inc50">+50</button>
+        <button class="buttons success" @click="inc100">+100</button>
+        <button class="buttons success" @click="inc1000">+1000</button>
       </div>
-      <div v-if="currentLifePoints <= 0">
-        <button class="buttons" @click="reset">RESET</button>
+      <div class="buttons-bottom">
+        <button class="buttons danger" @click="dec50">-50</button>
+        <button class="buttons danger" @click="dec100">-100</button>
+        <button class="buttons danger" @click="dec1000">-1000</button>
       </div>
+    </div>
+    <div v-if="currentLifePoints <= 0">
+      <button class="buttons" @click="reset">RESET</button>
     </div>
   </div>
 </template>
@@ -30,6 +37,7 @@ export default {
   props: {
     name: String,
     lifePoints: Number,
+    playerName: String,
   },
   methods: {
     inc1000() {
@@ -60,21 +68,84 @@ export default {
 
 <style lang="less" scoped>
 .container {
+  height: 480px;
+  width: 340px;
+  color: #000;
+  background-color: #ce9233;
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: column;
   align-items: center;
+  border: 6px solid #000;
+  border-radius: 20px 20px;
 
-  .lp {
-    border: 4px solid red;
-    border-radius: 10px;
-    width: 340px;
+  .name {
+    margin: 8px 0;
+    padding: 4px;
+    width: 90%;
+    border-radius: 4px;
+    box-shadow: 3px 3px 8px, -3px -1px 4px #fff;
+  }
+
+  .lifepoints {
+    width: 80%;
+    text-align: right;
+    font-size: 0.9em;
+    margin: 4px;
+  }
+
+  .image-container {
+    border: 4px solid #000;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    height: 240px;
+    width: 270px;
+    box-shadow: 0 0 10px;
+  }
+
+  .buttons-container {
+    background-color: #debe6a;
+    border: 4px solid #c06530;
+    height: 110px;
+    width: 90%;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
     align-items: center;
+    justify-content: space-evenly;
 
     .buttons {
       margin: 4px;
+      border: none;
+      width: 75px;
+      height: 30px;
+      transition: 0.3s;
+      font-size: 18px;
+      font-weight: bold;
+      &:hover {
+        cursor: pointer;
+        transform: scale(1.1);
+        border: 1px solid #000;
+      }
+      &:active {
+        background-color: #fff;
+      }
+      &.success {
+        border-radius: 10px 10px 4px 4px;
+        background: rgb(217, 249, 214);
+        background: linear-gradient(
+          0deg,
+          rgba(217, 249, 214, 1) 14%,
+          rgba(6, 255, 0, 1) 100%
+        );
+      }
+      &.danger {
+        border-radius: 4px 4px 10px 10px;
+        background: rgb(255, 0, 0);
+        background: linear-gradient(
+          0deg,
+          rgba(255, 0, 0, 1) 15%,
+          rgba(255, 255, 255, 1) 100%
+        );
+      }
     }
   }
 }
