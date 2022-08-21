@@ -60,7 +60,6 @@ export default {
 
 <style lang="less" scoped>
 .container {
-  height: 100vh;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -68,7 +67,7 @@ export default {
   .lp {
     border: 4px solid red;
     border-radius: 10px;
-    width: 400px;
+    width: 340px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;

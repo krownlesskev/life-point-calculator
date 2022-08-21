@@ -16,8 +16,14 @@ export default {
 };
 </script>
 
-<style>
+<style lang="less">
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 .container {
+  height: 100vh;
   display: flex;
   justify-content: space-evenly;
 }
