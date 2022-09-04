@@ -94,13 +94,14 @@ export default {
   }
 
   .image-container {
+    display: flex;
     border: 4px solid #000;
     border-radius: 8px;
     margin-bottom: 8px;
-    height: 273px;
-    width: 270px;
+    width: 90%;
     box-shadow: 0 0 10px;
     img {
+      border: none;
       border-radius: 4px;
       width: 100%;
     }
