@@ -10,14 +10,50 @@
     <div class="image-container"><img :src="image" :alt="image" /></div>
     <div class="buttons-container">
       <div class="buttons-top">
-        <button class="buttons success" @click="inc50">+50</button>
-        <button class="buttons success" @click="inc100">+100</button>
-        <button class="buttons success" @click="inc1000">+1000</button>
+        <button
+          class="buttons success"
+          @click="inc50"
+          :disabled="currentLifePoints <= 0"
+        >
+          +50
+        </button>
+        <button
+          class="buttons success"
+          @click="inc100"
+          :disabled="currentLifePoints <= 0"
+        >
+          +100
+        </button>
+        <button
+          class="buttons success"
+          @click="inc1000"
+          :disabled="currentLifePoints <= 0"
+        >
+          +1000
+        </button>
       </div>
       <div class="buttons-bottom">
-        <button class="buttons danger" @click="dec50">-50</button>
-        <button class="buttons danger" @click="dec100">-100</button>
-        <button class="buttons danger" @click="dec1000">-1000</button>
+        <button
+          class="buttons danger"
+          @click="dec50"
+          :disabled="currentLifePoints <= 0"
+        >
+          -50
+        </button>
+        <button
+          class="buttons danger"
+          @click="dec100"
+          :disabled="currentLifePoints <= 0"
+        >
+          -100
+        </button>
+        <button
+          class="buttons danger"
+          @click="dec1000"
+          :disabled="currentLifePoints <= 0"
+        >
+          -1000
+        </button>
       </div>
     </div>
     <div v-if="currentLifePoints <= 0">
@@ -77,6 +113,9 @@ export default {
   align-items: center;
   border: 6px solid #000;
   border-radius: 20px 20px;
+  &:hover {
+    transform: scale(1.05);
+  }
 
   .name {
     margin: 8px 0;
@@ -130,9 +169,7 @@ export default {
         transform: scale(1.1);
         border: 1px solid #000;
       }
-      &:active {
-        background-color: #fff;
-      }
+
       &.success {
         border-radius: 10px 10px 4px 4px;
         background: rgb(217, 249, 214);
@@ -150,6 +187,11 @@ export default {
           rgba(255, 0, 0, 1) 15%,
           rgba(255, 255, 255, 1) 100%
         );
+      }
+      &:active {
+        transition: 0s;
+        background: #fff;
+        transform: scale(1.2);
       }
     }
   }
