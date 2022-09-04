@@ -1,7 +1,7 @@
 <template>
   <div class="app-container">
-    <LifePoints name="PaPa" :lifePoints="4000" />
-    <LifePoints name="Ivan" :lifePoints="4000" />
+    <LifePoints name="PaPa" :lifePoints="4000" :image="papaImg" />
+    <LifePoints name="Ivan" :lifePoints="4000" :image="ivanImg" />
   </div>
 </template>
 
@@ -12,6 +12,12 @@ export default {
   name: "App",
   components: {
     LifePoints,
+  },
+  data() {
+    return {
+      ivanImg: require("./assets/imgs/beud.jpg"),
+      papaImg: require("./assets/imgs/dhd.jpg"),
+    };
   },
 };
 </script>

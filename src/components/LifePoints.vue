@@ -7,7 +7,7 @@
       <h2 v-if="currentLifePoints > 0">Life Points: {{ currentLifePoints }}</h2>
       <p v-else>{{ name }} has no more life points</p>
     </div>
-    <div class="image-container"></div>
+    <div class="image-container"><img :src="image" :alt="image" /></div>
     <div class="buttons-container">
       <div class="buttons-top">
         <button class="buttons success" @click="inc50">+50</button>
@@ -38,6 +38,7 @@ export default {
     name: String,
     lifePoints: Number,
     playerName: String,
+    image: String,
   },
   methods: {
     inc1000() {
@@ -68,7 +69,6 @@ export default {
 
 <style lang="less" scoped>
 .container {
-  height: 480px;
   width: 340px;
   color: #000;
   background-color: #ce9233;
@@ -97,9 +97,13 @@ export default {
     border: 4px solid #000;
     border-radius: 8px;
     margin-bottom: 8px;
-    height: 240px;
+    height: 273px;
     width: 270px;
     box-shadow: 0 0 10px;
+    img {
+      border-radius: 4px;
+      width: 100%;
+    }
   }
 
   .buttons-container {
